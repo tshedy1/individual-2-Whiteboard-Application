@@ -53,6 +53,13 @@ public class AddTextClass {
             dialog.showAndWait().ifPresent(textLabel::setText);
         });
 
+        removeText.setOnAction(e -> {
+            Pane container = (Pane) textLabel.getParent();
+            if (container != null) {
+                container.getChildren().remove(textLabel);
+            }
+        });
+        
         contextMenu.getItems().addAll(editText, increaseSize, decreaseSize);
 
         textLabel.setOnContextMenuRequested(e -> contextMenu.show(textLabel, e.getScreenX(), e.getScreenY()));
